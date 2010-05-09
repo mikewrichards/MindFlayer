@@ -16,6 +16,11 @@ namespace MindFlayer
     public class Game
     {
         public Rectangle border;
+        public Game(Rectangle initBorder)
+        {
+            border = initBorder;
+        }
+
         public void Update()
         {
         }
