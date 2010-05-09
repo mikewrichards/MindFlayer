@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using System.Collections;
 
 namespace MindFlayer
 {
@@ -20,6 +21,7 @@ namespace MindFlayer
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Game game;
 
         public MindFlayer()
         {
@@ -36,6 +38,7 @@ namespace MindFlayer
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            game = new Game(new Rectangle(0,0,GraphicsDevice.Viewport.Width,GraphicsDevice.Viewport.Height));
 
             base.Initialize();
         }

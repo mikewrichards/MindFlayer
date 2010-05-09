@@ -40,5 +40,10 @@ namespace MindFlayer
         }
 
 
+
+        internal void updatePosition()
+        {
+            //method for updating object's position based on speed, etc.
+        }
     }
 }

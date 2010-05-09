@@ -10,19 +10,27 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using System.Collections;
 
 namespace MindFlayer
 {
     public class Game
     {
         public Rectangle border;
+        public ArrayList asteroids;
+
         public Game(Rectangle initBorder)
         {
             border = initBorder;
+            asteroids = new ArrayList();
         }
 
         public void Update()
         {
+            foreach(GameObject asteroid in asteroids)
+            {
+                asteroid.updatePosition();
+            }
         }
 
         public Stack<Collision> GetCollisions()
