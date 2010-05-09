@@ -5,8 +5,14 @@ using System.Text;
 
 namespace MindFlayer
 {
-    class Collision
+    public class Collision
     {
-        int objectA, objectB;
+        public int objectA, objectB;
+
+        public Collision(int A, int B)
+        {
+            objectA = A;
+            objectB = B;
+        }
     }
 }

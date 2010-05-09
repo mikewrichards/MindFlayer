@@ -13,9 +13,9 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace MindFlayer
 {
-    class Game
+    public class Game
     {
-        Rectangle border;
+        public Rectangle border;
         public void Update()
         {
         }
