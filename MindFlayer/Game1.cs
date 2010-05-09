@@ -20,6 +20,8 @@ namespace MindFlayer
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private static int MAX_SIZE = 8;
+        private static int MIN_SIZE = 3;
 
         public Game1()
         {
