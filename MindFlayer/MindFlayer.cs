@@ -10,20 +10,20 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using System.Collections;
 
 namespace MindFlayer
 {
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class MindFlayer : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        private static int MAX_SIZE = 8;
-        private static int MIN_SIZE = 3;
+        Game game;
 
-        public Game1()
+        public MindFlayer()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -38,6 +38,7 @@ namespace MindFlayer
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            game = new Game(new Rectangle(0,0,GraphicsDevice.Viewport.Width,GraphicsDevice.Viewport.Height));
 
             base.Initialize();
         }
