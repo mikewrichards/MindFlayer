@@ -31,19 +31,51 @@ namespace MindFlayer
 
         public GameObject(Vector2 initialPosition, Vector2 initialVelocity, int initialSize, Color initialColour )
         {
+            //initializes an object, including size, position, velocity, and color
             position = initialPosition;
             velocity = initialVelocity;
+            rotation = 0.0f;
+            rSpeed = 0.0f;
             size = initialSize;
             colour = initialColour;
+            vertices = new List<Vector2>();
 
-            // create some awesome vertices
+            //initializes vertices
+            UpdateVertices();
         }
 
 
 
-        internal void updatePosition()
+        internal void UpdatePosition()
         {
-            //method for updating object's position based on speed, etc.
+            // updates object's position and rotation, then recalculates vertices
+            position += velocity;
+        }
+
+        private void UpdateRotation()
+        {
+            rotation += rSpeed;
+            while (rotation >= MathHelper.TwoPi)
+            {
+                rotation -= MathHelper.TwoPi;
+            }
+            while (rotation <= 0)
+            {
+                rotation += MathHelper.TwoPi;
+            }
+        }
+
+        private void UpdateVertices()
+        {
+            vertices.Clear();
+            //updates vertices based on position and rotation of object
+        }
+
+        internal void UpdateObject()
+        {
+            UpdatePosition();
+            UpdateRotation();
+            UpdateVertices();
         }
     }
 }

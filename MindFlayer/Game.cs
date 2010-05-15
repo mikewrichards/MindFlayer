@@ -29,7 +29,7 @@ namespace MindFlayer
         {
             foreach(GameObject asteroid in asteroids)
             {
-                asteroid.updatePosition();
+                asteroid.UpdateObject();
             }
         }
 
@@ -42,7 +42,7 @@ namespace MindFlayer
         {
         }
 
-        public void purgeDead()
+        public void PurgeDead()
         {
         }
     }
