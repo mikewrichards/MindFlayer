@@ -22,20 +22,21 @@ namespace MindFlayer
         float rotation = 0;
         float rSpeed = 0;
 
-        List<Vector2> vertices;
-        Color colour;
+        public List<Vector2> vertices;
+        public Color colour;
         int size;
+        float radius;
         
 
 
 
-        public GameObject(Vector2 initialPosition, Vector2 initialVelocity, int initialSize, Color initialColour )
+        public GameObject(Vector2 initialPosition, Vector2 initialVelocity, int initialSize, Color initialColour, float initialRotation, float initialRSpeed)
         {
             //initializes an object, including size, position, velocity, and color
             position = initialPosition;
             velocity = initialVelocity;
-            rotation = 0.0f;
-            rSpeed = 0.0f;
+            rotation = initialRotation;
+            rSpeed = initialRSpeed;
             size = initialSize;
             colour = initialColour;
             vertices = new List<Vector2>();
@@ -67,8 +68,21 @@ namespace MindFlayer
 
         private void UpdateVertices()
         {
-            vertices.Clear();
             //updates vertices based on position and rotation of object
+            vertices.Clear();
+
+            float thetaOne;
+            float theta;
+            Vector2 temp = new Vector2();
+            radius = size * 5;
+            thetaOne = MathHelper.TwoPi / size;
+            for (int i = 0; i < size; i++)
+            {
+                theta = thetaOne * i + rotation;
+                temp.X = radius * (float) Math.Cos(theta) + position.X;
+                temp.Y = radius * (float) Math.Sin(theta) + position.Y;
+                vertices.Add(temp);
+            }
         }
 
         internal void UpdateObject()
