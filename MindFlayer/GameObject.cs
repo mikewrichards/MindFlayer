@@ -95,7 +95,8 @@ namespace MindFlayer
         public void UpdateVelocityWithForce(Vector2 force)
         {
             mass = size;
-            velocity += force / mass;
+            velocity.X += force.X / mass;
+            velocity.Y += force.Y / mass;
         }
     }
 }
