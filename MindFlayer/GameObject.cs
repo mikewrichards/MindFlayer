@@ -26,6 +26,7 @@ namespace MindFlayer
         public Color colour;
         int size;
         float radius;
+        float mass;
         
 
 
@@ -90,6 +91,12 @@ namespace MindFlayer
             UpdatePosition();
             UpdateRotation();
             UpdateVertices();
+        }
+
+        public void UpdateVelocityWithForce(Vector2 force)
+        {
+            mass = size;
+            velocity += force / mass;
         }
     }
 }
