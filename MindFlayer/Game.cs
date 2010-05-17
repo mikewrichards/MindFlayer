@@ -39,6 +39,7 @@ namespace MindFlayer
             {
                 ApplyGravityToObject(asteroid);
                 ApplyCollisionForceToObject(asteroid);
+                asteroid.UpdateObject();
             }
         }
 
@@ -53,13 +54,12 @@ namespace MindFlayer
             {
                 // find unit vector
                 Vector2 diffVect = opposer.position - position;
-                float distance = diffVect.Length();
-                Vector2 unitVector = diffVect / distance;
+                Vector2 unitVector = diffVect / diffVect.Length();
 
                 Vector2 currentForce = (50f / diffVect.LengthSquared()) * GRAVITATIONAL_CONSTANT * unitVector;
                 netForce += currentForce;
             }
-
+            return;
             //netForce *= gameObject.mass;
 
             // gameObject.applyForce(netForce);
@@ -70,6 +70,7 @@ namespace MindFlayer
         public void ApplyCollisionForceToObject(GameObject asteriod)
         {
             // woot
+            return;
         }
 
 
@@ -86,6 +87,8 @@ namespace MindFlayer
         // will destroy any dead GameObjects from Game
         public void PurgeDead()
         {
+
+            return;
         }
 
 
