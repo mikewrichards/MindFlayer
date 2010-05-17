@@ -25,13 +25,37 @@ namespace MindFlayer
             asteroids = new ArrayList();
         }
 
+        // method called during game loop
         public void Update()
         {
-            foreach(GameObject asteroid in asteroids)
+            ApplyForces();
+            PurgeDead();
+        }
+
+        public void ApplyForces()
+        {
+            foreach (GameObject asteroid in asteroids)
             {
-                asteroid.UpdateObject();
+                ApplyGravityToObject(asteroid);
+                ApplyCollisionForceToObject(asteroid);
             }
         }
+
+        // will calulate all gravitational forces in game
+        // then will apply the force to the given object
+        public void ApplyGravityToObject(GameObject asteriod)
+        {
+            // woot
+        }
+
+        // will calulate all collision forces in game
+        // then will apply the force to the given object
+        public void ApplyCollisionForceToObject(GameObject asteriod)
+        {
+            // woot
+        }
+
+
 
         public Stack<Collision> GetCollisions()
         {
@@ -42,8 +66,11 @@ namespace MindFlayer
         {
         }
 
+        // will destroy any dead GameObjects from Game
         public void PurgeDead()
         {
         }
+
+
     }
 }
