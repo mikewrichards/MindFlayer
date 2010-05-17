@@ -24,6 +24,7 @@ namespace MindFlayer
         Texture2D pixel;
         Game game;
         Random randomNumberGenerator;
+        Stack<Collision> collisions;
         byte[] colorBytes;
 
         public MindFlayer()
@@ -48,10 +49,10 @@ namespace MindFlayer
 
 
             //TEST**************************
-            randomNumberGenerator.NextBytes(colorBytes);
-            game.asteroids.Add(new GameObject(new Vector2(200, 200), new Vector2(2.0f, 0.0f), 10, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.05f));
-            randomNumberGenerator.NextBytes(colorBytes);
-            game.asteroids.Add(new GameObject(new Vector2(600, 200), new Vector2(-1.0f, 0.0f), 6, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.03f));
+            //randomNumberGenerator.NextBytes(colorBytes);
+            //game.asteroids.Add(new GameObject(new Vector2(200, 200), new Vector2(2.0f, 0.0f), 10, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.05f));
+            //randomNumberGenerator.NextBytes(colorBytes);
+            //game.asteroids.Add(new GameObject(new Vector2(600, 200), new Vector2(-1.0f, 0.0f), 6, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.03f));
             //TEST**************************
 
             base.Initialize();
@@ -92,6 +93,7 @@ namespace MindFlayer
 
             // TODO: Add your update logic here
             game.Update();
+            collisions = game.GetCollisions();
             base.Update(gameTime);
         }
 
@@ -102,6 +104,7 @@ namespace MindFlayer
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+
             spriteBatch.Begin();
 
             //TEST***************************

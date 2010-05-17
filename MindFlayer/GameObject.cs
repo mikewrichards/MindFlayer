@@ -17,16 +17,16 @@ namespace MindFlayer
     public class GameObject
     {
 
-        Vector2 position;
-        Vector2 velocity;
-        float rotation = 0;
-        float rSpeed = 0;
+        public Vector2 position;
+        public Vector2 velocity;
+        public float rotation = 0;
+        public float rSpeed = 0;
 
         public List<Vector2> vertices;
         public Color colour;
-        int size;
-        float radius;
-        float mass;
+        public int size;
+        public float radius;
+        public float mass;
         
 
 
