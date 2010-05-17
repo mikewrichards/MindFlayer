@@ -59,7 +59,6 @@ namespace MindFlayer
                 Vector2 currentForce = (50f / diffVect.LengthSquared()) * GRAVITATIONAL_CONSTANT * unitVector;
                 netForce += currentForce;
             }
-            return;
             //netForce *= gameObject.mass;
 
             // gameObject.applyForce(netForce);
@@ -70,7 +69,6 @@ namespace MindFlayer
         public void ApplyCollisionForceToObject(GameObject asteriod)
         {
             // woot
-            return;
         }
 
 
@@ -87,8 +85,6 @@ namespace MindFlayer
         // will destroy any dead GameObjects from Game
         public void PurgeDead()
         {
-
-            return;
         }
 
 
