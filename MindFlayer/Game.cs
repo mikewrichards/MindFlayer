@@ -18,6 +18,7 @@ namespace MindFlayer
     {
         public Rectangle border;
         public ArrayList asteroids;
+        private const float GRAVITATIONAL_CONSTANT = 75f;
 
         public Game(Rectangle initBorder)
         {
@@ -41,14 +42,30 @@ namespace MindFlayer
             }
         }
 
-        // will calulate all gravitational forces in game
+        // calulate all gravitational forces in game
         // then will apply the force to the given object
-        public void ApplyGravityToObject(GameObject asteriod)
+        public void ApplyGravityToObject(GameObject gameObject)
         {
-            // woot
+            Vector2 netForce = new Vector2(0f, 0f);
+            Vector2 position = gameObject.position;
+
+            foreach (GameObject opposer in asteroids)
+            {
+                // find unit vector
+                Vector2 diffVect = opposer.position - position;
+                float distance = diffVect.Length();
+                Vector2 unitVector = diffVect / distance;
+
+                Vector2 currentForce = (50f / diffVect.LengthSquared()) * GRAVITATIONAL_CONSTANT * unitVector;
+                netForce += currentForce;
+            }
+
+            //netForce *= gameObject.mass;
+
+            // gameObject.applyForce(netForce);
         }
 
-        // will calulate all collision forces in game
+        // calulate all collision forces in game
         // then will apply the force to the given object
         public void ApplyCollisionForceToObject(GameObject asteriod)
         {

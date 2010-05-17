@@ -17,7 +17,7 @@ namespace MindFlayer
     public class GameObject
     {
 
-        Vector2 position;
+        public Vector2 position;
         Vector2 velocity;
         float rotation = 0;
         float rSpeed = 0;
