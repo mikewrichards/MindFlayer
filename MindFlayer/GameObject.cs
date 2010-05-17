@@ -21,7 +21,6 @@ namespace MindFlayer
         public Vector2 velocity;
         public float rotation = 0;
         public float rSpeed = 0;
-
         public List<Vector2> vertices;
         public Color colour;
         public int size;

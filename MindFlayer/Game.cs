@@ -18,6 +18,7 @@ namespace MindFlayer
     {
         public Rectangle border;
         public ArrayList asteroids;
+        private const float GRAVITATIONAL_CONSTANT = 75f;
 
         public Game(Rectangle initBorder)
         {
@@ -25,13 +26,52 @@ namespace MindFlayer
             asteroids = new ArrayList();
         }
 
+        // method called during game loop
         public void Update()
         {
-            foreach(GameObject asteroid in asteroids)
+            ApplyForces();
+            PurgeDead();
+        }
+
+        public void ApplyForces()
+        {
+            foreach (GameObject asteroid in asteroids)
             {
+                ApplyGravityToObject(asteroid);
+                ApplyCollisionForceToObject(asteroid);
                 asteroid.UpdateObject();
             }
         }
+
+        // calulate all gravitational forces in game
+        // then will apply the force to the given object
+        public void ApplyGravityToObject(GameObject gameObject)
+        {
+            Vector2 netForce = new Vector2(0f, 0f);
+            Vector2 position = gameObject.position;
+
+            foreach (GameObject opposer in asteroids)
+            {
+                // find unit vector
+                Vector2 diffVect = opposer.position - position;
+                Vector2 unitVector = diffVect / diffVect.Length();
+
+                Vector2 currentForce = (50f / diffVect.LengthSquared()) * GRAVITATIONAL_CONSTANT * unitVector;
+                netForce += currentForce;
+            }
+            //netForce *= gameObject.mass;
+
+            // gameObject.applyForce(netForce);
+        }
+
+        // calulate all collision forces in game
+        // then will apply the force to the given object
+        public void ApplyCollisionForceToObject(GameObject asteriod)
+        {
+            // woot
+        }
+
+
 
         public Stack<Collision> GetCollisions()
         {
@@ -120,8 +160,11 @@ namespace MindFlayer
         {
         }
 
+        // will destroy any dead GameObjects from Game
         public void PurgeDead()
         {
         }
+
+
     }
 }
