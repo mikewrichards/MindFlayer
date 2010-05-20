@@ -25,7 +25,9 @@ namespace MindFlayer
         Game game;
         Random randomNumberGenerator;
         Stack<Collision> collisions;
-        bool isCollision;
+        //TEST**********************
+        //bool isCollision;
+        //TEST**********************
         byte[] colorBytes;
 
         public MindFlayer()
@@ -45,14 +47,14 @@ namespace MindFlayer
             // TODO: Add your initialization logic here
             game = new Game(new Rectangle(GraphicsDevice.Viewport.X, GraphicsDevice.Viewport.Y, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height));
             randomNumberGenerator = new Random();
-            isCollision = false;
+            //isCollision = false;
             colorBytes = new byte[3];
 
 
 
             //TEST**************************
-            randomNumberGenerator.NextBytes(colorBytes);
-            game.asteroids.Add(new GameObject(new Vector2(0, 0), new Vector2(1.0f, 0.75f), 10, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.0f));
+            //randomNumberGenerator.NextBytes(colorBytes);
+            //game.asteroids.Add(new GameObject(new Vector2(0, 0), new Vector2(1.0f, 0.75f), 10, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.0f));
             //TEST**************************
 
             base.Initialize();
@@ -94,10 +96,13 @@ namespace MindFlayer
             // TODO: Add your update logic here
             game.Update();
             collisions = game.GetCollisions();
-            if (collisions.Count != 0)
-                isCollision = true;
-            else
-                isCollision = false;
+
+            //TEST**************************
+            //if (collisions.Count != 0)
+            //    isCollision = true;
+            //else
+            //    isCollision = false;
+            //TEST**************************
             base.Update(gameTime);
         }
 
@@ -107,10 +112,12 @@ namespace MindFlayer
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            if (isCollision)
-                GraphicsDevice.Clear(Color.White);
-            else
-                GraphicsDevice.Clear(Color.Black);
+            //TEST************************************
+            //if (isCollision)
+            //    GraphicsDevice.Clear(Color.White);
+            //else
+            //TEST************************************
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
 
@@ -139,12 +146,6 @@ namespace MindFlayer
 
         private void DrawObject(GameObject asteroid)
         {
-            //for (int i = 0; i < asteroid.vertices.Count - 1; i++)
-            //{
-            //    DrawLine(asteroid.vertices.ElementAt(i), asteroid.vertices.ElementAt(i + 1), asteroid.colour);
-            //}
-            //DrawLine(asteroid.vertices.First(), asteroid.vertices.Last(), asteroid.colour);
-
             foreach (Vector2 point1 in asteroid.vertices)
             {
                 foreach (Vector2 point2 in asteroid.vertices)
