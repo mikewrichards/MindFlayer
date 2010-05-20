@@ -50,9 +50,9 @@ namespace MindFlayer
 
             //TEST**************************
             randomNumberGenerator.NextBytes(colorBytes);
-            game.asteroids.Add(new GameObject(new Vector2(200, 200), new Vector2(2.0f, 0.0f), 10, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.05f));
+            game.asteroids.Add(new GameObject(new Vector2(300, 300), new Vector2(0.0f, 0.0f), 10, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.05f));
             randomNumberGenerator.NextBytes(colorBytes);
-            game.asteroids.Add(new GameObject(new Vector2(600, 500), new Vector2(0.0f, -1.0f), 6, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.03f));
+            game.asteroids.Add(new GameObject(new Vector2(600, 500), new Vector2(0.0f, -3.5f), 6, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.03f));
             //TEST**************************
 
             base.Initialize();
