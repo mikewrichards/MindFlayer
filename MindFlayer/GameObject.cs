@@ -26,6 +26,7 @@ namespace MindFlayer
         public int size;
         public float radius;
         public float mass;
+        public bool alive;
         
 
 
@@ -39,6 +40,7 @@ namespace MindFlayer
             rSpeed = initialRSpeed;
             size = initialSize;
             colour = initialColour;
+            alive = true;
             vertices = new List<Vector2>();
 
             //initializes vertices

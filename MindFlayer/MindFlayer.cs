@@ -25,6 +25,7 @@ namespace MindFlayer
         Game game;
         Random randomNumberGenerator;
         Stack<Collision> collisions;
+        bool isCollision;
         byte[] colorBytes;
 
         public MindFlayer()
@@ -42,17 +43,16 @@ namespace MindFlayer
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            game = new Game(new Rectangle(0,0,GraphicsDevice.Viewport.Width,GraphicsDevice.Viewport.Height));
+            game = new Game(new Rectangle(GraphicsDevice.Viewport.X, GraphicsDevice.Viewport.Y, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height));
             randomNumberGenerator = new Random();
+            isCollision = false;
             colorBytes = new byte[3];
 
 
 
             //TEST**************************
             randomNumberGenerator.NextBytes(colorBytes);
-            game.asteroids.Add(new GameObject(new Vector2(300, 300), new Vector2(0.0f, 0.0f), 10, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.05f));
-            randomNumberGenerator.NextBytes(colorBytes);
-            game.asteroids.Add(new GameObject(new Vector2(600, 500), new Vector2(0.0f, -3.5f), 6, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.03f));
+            game.asteroids.Add(new GameObject(new Vector2(0, 0), new Vector2(1.0f, 0.75f), 10, new Color(colorBytes[0], colorBytes[1], colorBytes[2]), 0.0f, 0.0f));
             //TEST**************************
 
             base.Initialize();
@@ -94,6 +94,10 @@ namespace MindFlayer
             // TODO: Add your update logic here
             game.Update();
             collisions = game.GetCollisions();
+            if (collisions.Count != 0)
+                isCollision = true;
+            else
+                isCollision = false;
             base.Update(gameTime);
         }
 
@@ -103,7 +107,10 @@ namespace MindFlayer
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            if (isCollision)
+                GraphicsDevice.Clear(Color.White);
+            else
+                GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
 
