@@ -34,6 +34,16 @@ namespace MindFlayer
             }
         }
 
+        public List<String> GetOptions()
+        {
+            return options;
+        }
+
+        public String GetOption(int num)
+        {
+            return options.ElementAt(num);
+        }
+
         public void SelectNext()
         {
             if (highlighted == -1)

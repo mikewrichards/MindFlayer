@@ -25,7 +25,6 @@ namespace MindFlayer
         Game game;
         Random randomNumberGenerator;
         Stack<Collision> collisions;
-        bool isMainMenu;
         Menu mainMenu;
 
         //TEST**********************
@@ -51,7 +50,11 @@ namespace MindFlayer
             game = new Game(new Rectangle(GraphicsDevice.Viewport.X, GraphicsDevice.Viewport.Y, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height));
             randomNumberGenerator = new Random();
             //isCollision = false;
-            isMainMenu = true;
+            mainMenu = new Menu();
+            mainMenu.AddItem("Single-Player");
+            mainMenu.AddItem("Co-op 2-Player");
+            mainMenu.AddItem("Competitive 2-Player");
+            mainMenu.AddItem("Quit");
             colorBytes = new byte[3];
 
 
@@ -93,25 +96,26 @@ namespace MindFlayer
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (isMainMenu)
+            if (mainMenu.activated)
             {
 
+            }
+            else
+            {
+                game.Update();
+                collisions = game.GetCollisions();
+                //TEST**************************
+                //if (collisions.Count != 0)
+                //    isCollision = true;
+                //else
+                //    isCollision = false;
+                //TEST**************************
             }
 
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
-            game.Update();
-            collisions = game.GetCollisions();
-
-            //TEST**************************
-            //if (collisions.Count != 0)
-            //    isCollision = true;
-            //else
-            //    isCollision = false;
-            //TEST**************************
             base.Update(gameTime);
         }
 
