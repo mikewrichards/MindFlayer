@@ -26,6 +26,7 @@ namespace MindFlayer
         Random randomNumberGenerator;
         Stack<Collision> collisions;
         Menu mainMenu;
+        SpriteFont font;
 
         //TEST**********************
         //bool isCollision;
@@ -55,7 +56,10 @@ namespace MindFlayer
             mainMenu.AddItem("Co-op 2-Player");
             mainMenu.AddItem("Competitive 2-Player");
             mainMenu.AddItem("Quit");
+            mainMenu.activated = true;
             colorBytes = new byte[3];
+
+            font = Content.Load<SpriteFont>("courierNew");
 
 
 
@@ -138,14 +142,41 @@ namespace MindFlayer
             //DrawLine(new Vector2(0.0f, 0.0f), new Vector2(100.0f, 100.0f), Color.White);
             //TEST***************************
 
-            foreach (GameObject asteroid in game.asteroids)
+
+            if (mainMenu.activated)
             {
-                DrawObject(asteroid);
+                DrawMenu(mainMenu);
+            }
+            else
+            {
+                DrawGame(game);
             }
 
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void DrawGame(Game game)
+        {
+            foreach (GameObject asteroid in game.asteroids)
+            {
+                DrawObject(asteroid);
+            }
+        }
+
+        private void DrawMenu(Menu menu)
+        {
+            foreach (String item in menu.GetOptions())
+            {
+                DrawString(new Vector2(GraphicsDevice.Viewport.Width / 2, 50f + 50f * mainMenu.GetOptions().IndexOf(item)), item, Color.White);
+            }
+        }
+
+        private void DrawString(Vector2 position, String text, Color colour)
+        {
+            spriteBatch.DrawString(font, text, position,
+                colour, 0, font.MeasureString(text) / 2, 1.0f, SpriteEffects.None, 0.5f);
         }
 
         private void DrawLine(Vector2 start, Vector2 end, Color colour)
