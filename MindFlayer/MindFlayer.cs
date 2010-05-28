@@ -27,6 +27,7 @@ namespace MindFlayer
         Stack<Collision> collisions;
         Menu mainMenu;
         SpriteFont font;
+        KeyboardState currentState, previousState;
 
         //TEST**********************
         //bool isCollision;
@@ -58,6 +59,7 @@ namespace MindFlayer
             mainMenu.AddItem("Quit");
             mainMenu.activated = true;
             colorBytes = new byte[3];
+            currentState = Keyboard.GetState();
 
             font = Content.Load<SpriteFont>("courierNew");
 
@@ -100,9 +102,12 @@ namespace MindFlayer
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            previousState = currentState;
+            currentState = Keyboard.GetState();
+
             if (mainMenu.activated)
             {
-
+                HandleMenuKeys();
             }
             else
             {
@@ -121,6 +126,23 @@ namespace MindFlayer
                 this.Exit();
 
             base.Update(gameTime);
+        }
+
+        private void HandleMenuKeys()
+        {
+            if (KeyPressed(Keys.Down))
+            {
+                mainMenu.SelectNext();
+            }
+            if (KeyPressed(Keys.Up))
+            {
+                mainMenu.SelectPrevious();
+            }
+        }
+
+        private bool KeyPressed(Keys key)
+        {
+            return currentState.IsKeyDown(key) && previousState.IsKeyUp(key);
         }
 
         /// <summary>
@@ -167,9 +189,18 @@ namespace MindFlayer
 
         private void DrawMenu(Menu menu)
         {
+            Color color;
             foreach (String item in menu.GetOptions())
             {
-                DrawString(new Vector2(GraphicsDevice.Viewport.Width / 2, 50f + 50f * mainMenu.GetOptions().IndexOf(item)), item, Color.White);
+                if (mainMenu.GetHighlighted() == mainMenu.GetOptions().IndexOf(item))
+                {
+                    color = Color.Yellow;
+                }
+                else
+                {
+                    color = Color.White;
+                }
+                DrawString(new Vector2(GraphicsDevice.Viewport.Width / 2, 50f + 50f * mainMenu.GetOptions().IndexOf(item)), item, color);
             }
         }
 

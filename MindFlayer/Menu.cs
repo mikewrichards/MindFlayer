@@ -44,6 +44,11 @@ namespace MindFlayer
             return options.ElementAt(num);
         }
 
+        public int GetHighlighted()
+        {
+            return highlighted;
+        }
+
         public void SelectNext()
         {
             if (highlighted == -1)
