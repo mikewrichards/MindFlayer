@@ -2,21 +2,21 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>pixel.bmp</Source>
-      <Name>pixel</Name>
+      <Source>Sprites\pixel.bmp</Source>
+      <Name>Sprites\pixel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\bin\x86\Debug\Content\pixel.xnb</Output>
+      <Output>C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\bin\x86\Debug\Content\Sprites\pixel.xnb</Output>
       <Time>2010-05-16T19:04:09.406-04:00</Time>
     </Item>
     <Item>
-      <Source>courierNew.spritefont</Source>
-      <Name>courierNew</Name>
+      <Source>Fonts\Menu Font Bold.spritefont</Source>
+      <Name>Fonts\Menu Font Bold</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\bin\x86\Debug\Content\courierNew.xnb</Output>
+      <Output>C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\bin\x86\Debug\Content\Fonts\Menu Font Bold.xnb</Output>
       <Time>2010-05-28T11:45:44.6046792-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>

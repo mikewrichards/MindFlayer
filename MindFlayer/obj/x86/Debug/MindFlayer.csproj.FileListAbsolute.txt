@@ -4,5 +4,5 @@ C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\obj\x8
 C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\obj\x86\Debug\MindFlayer.exe
 C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\obj\x86\Debug\MindFlayer.pdb
-C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\bin\x86\Debug\Content\pixel.xnb
-C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\bin\x86\Debug\Content\courierNew.xnb
+C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\bin\x86\Debug\Content\Sprites\pixel.xnb
+C:\Users\Mike\Documents\Visual Studio 2008\Projects\MindFlayer\MindFlayer\bin\x86\Debug\Content\Fonts\Menu Font Bold.xnb

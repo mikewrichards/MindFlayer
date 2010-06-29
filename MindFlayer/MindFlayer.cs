@@ -25,7 +25,7 @@ namespace MindFlayer
         Game game;
         Random randomNumberGenerator;
         Stack<Collision> collisions;
-        Menu mainMenu;
+        Menu mainMenu, optionsMenu;
         SpriteFont font;
         KeyboardState currentState, previousState;
 
@@ -56,13 +56,14 @@ namespace MindFlayer
             mainMenu.AddItem("Single-Player");
             mainMenu.AddItem("Co-op 2-Player");
             mainMenu.AddItem("Competitive 2-Player");
+            mainMenu.AddItem("Options");
             mainMenu.AddItem("Quit");
             mainMenu.activated = true;
+            optionsMenu = new Menu();
+            optionsMenu.AddItem("THIS IS THE OPTIONS MENU");
+            optionsMenu.AddItem("Back");
             colorBytes = new byte[3];
             currentState = Keyboard.GetState();
-
-            font = Content.Load<SpriteFont>("courierNew");
-
 
 
             //TEST**************************
@@ -81,7 +82,8 @@ namespace MindFlayer
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            pixel = Content.Load<Texture2D>("pixel");
+            pixel = Content.Load<Texture2D>("Sprites\\pixel");
+            font = Content.Load<SpriteFont>("Fonts\\Menu Font Bold");
 
             // TODO: use this.Content to load your game content here
         }
@@ -107,7 +109,11 @@ namespace MindFlayer
 
             if (mainMenu.activated)
             {
-                HandleMenuKeys();
+                HandleMainMenuKeys();
+            } 
+            else if (optionsMenu.activated)
+            {
+                HandleOptionsMenuKeys();
             }
             else
             {
@@ -128,7 +134,32 @@ namespace MindFlayer
             base.Update(gameTime);
         }
 
-        private void HandleMenuKeys()
+        private void HandleOptionsMenuKeys()
+        {
+            if (KeyPressed(Keys.Down))
+            {
+                optionsMenu.SelectNext();
+            }
+            if (KeyPressed(Keys.Up))
+            {
+                optionsMenu.SelectPrevious();
+            }
+            if (KeyPressed(Keys.Enter))
+            {
+                int option = optionsMenu.GetHighlighted();
+                switch (option)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        mainMenu.activated = true;
+                        optionsMenu.activated = false;
+                        break;
+                }
+            }
+        }
+
+        private void HandleMainMenuKeys()
         {
             if (KeyPressed(Keys.Down))
             {
@@ -137,6 +168,29 @@ namespace MindFlayer
             if (KeyPressed(Keys.Up))
             {
                 mainMenu.SelectPrevious();
+            }
+            if (KeyPressed(Keys.Enter))
+            {
+                int option = mainMenu.GetHighlighted();
+                switch (option)
+                {
+                    case 0:
+                        mainMenu.activated = false;
+                        break;
+                    case 1:
+                        mainMenu.activated = false;
+                        break;
+                    case 2:
+                        mainMenu.activated = false;
+                        break;
+                    case 3:
+                        mainMenu.activated = false;
+                        optionsMenu.activated = true;
+                        break;
+                    case 4:
+                        Exit();
+                        break;
+                }
             }
         }
 
@@ -169,6 +223,10 @@ namespace MindFlayer
             {
                 DrawMenu(mainMenu);
             }
+            else if (optionsMenu.activated)
+            {
+                DrawMenu(optionsMenu);
+            }
             else
             {
                 DrawGame(game);
@@ -192,7 +250,7 @@ namespace MindFlayer
             Color color;
             foreach (String item in menu.GetOptions())
             {
-                if (mainMenu.GetHighlighted() == mainMenu.GetOptions().IndexOf(item))
+                if (menu.GetHighlighted() == menu.GetOptions().IndexOf(item))
                 {
                     color = Color.Yellow;
                 }
@@ -200,7 +258,7 @@ namespace MindFlayer
                 {
                     color = Color.White;
                 }
-                DrawString(new Vector2(GraphicsDevice.Viewport.Width / 2, 50f + 50f * mainMenu.GetOptions().IndexOf(item)), item, color);
+                DrawString(new Vector2(GraphicsDevice.Viewport.Width / 2, 50f + 50f * menu.GetOptions().IndexOf(item)), item, color);
             }
         }
 

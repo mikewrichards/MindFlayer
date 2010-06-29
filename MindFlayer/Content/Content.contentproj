@@ -38,15 +38,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="pixel.bmp">
+    <Compile Include="Sprites\pixel.bmp">
       <Name>pixel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="courierNew.spritefont">
-      <Name>courierNew</Name>
+    <Compile Include="Fonts\Menu Font Bold.spritefont">
+      <Name>Menu Font Bold</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
